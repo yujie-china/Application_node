@@ -3,6 +3,7 @@ const h5Service = require("../service/h5.service")
 class H5Controller {
     async Insert (ctx, next) {
         const {
+
             age = "未填数据",
             position = "未填数据",
             other_position = "未填数据",
