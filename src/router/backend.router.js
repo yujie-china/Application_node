@@ -8,7 +8,7 @@ backendRouter.get("/interview/tableData", backendController.interviewTable)
 backendRouter.post("/interview/operate", backendController.operateComment)
 backendRouter.post("/interview/research", backendController.researchComment)
 backendRouter.post("/interview/market", backendController.marketComment)
-
+backendRouter.get("/application/detailsData", backendController.detailsData)
 
 //导出路由
 module.exports = backendRouter;

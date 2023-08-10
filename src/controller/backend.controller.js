@@ -36,7 +36,6 @@ class backendController {
     }
     async researchComment (ctx, next) {
         const { main_name, research_itw_name, research_itw_time, research_itw_write_result, research_itw_result, research_itw_suggestion } = ctx.request.body
-        console.log(research_itw_write_result);
         const result = await backendService.researchComment(main_name, research_itw_name, research_itw_time, research_itw_write_result, research_itw_result, research_itw_suggestion)
         ctx.body = {
             code: 0,
@@ -46,6 +45,14 @@ class backendController {
     async marketComment (ctx, next) {
         const { main_name, market_itw_name, market_itw_time, market_itw_result, market_itw_suggest } = ctx.request.body
         const result = await backendService.marketComment(main_name, market_itw_name, market_itw_time, market_itw_result, market_itw_suggest)
+        ctx.body = {
+            code: 0,
+            data: result
+        }
+    }
+    async detailsData (ctx, next) {
+        const { name } = ctx.request.query
+        const result = await backendService.detailsData(name)
         ctx.body = {
             code: 0,
             data: result
