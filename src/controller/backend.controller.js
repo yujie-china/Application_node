@@ -58,5 +58,14 @@ class backendController {
             data: result
         }
     }
+    //最终结果
+    async finallyResult (ctx, next) {
+        const { finallyResult, name } = ctx.request.body
+        await backendService.finallyResult(finallyResult, name)
+        ctx.body = {
+            code: 0
+        }
+
+    }
 }
 module.exports = new backendController();

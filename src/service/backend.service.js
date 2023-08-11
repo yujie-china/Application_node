@@ -29,13 +29,7 @@ class backendService {
         }
         const statement = `INSERT INTO operate_itw_info (main_name, operate_itw_name, operate_itw_time, operate_itw_result, operate_itw_suggest) VALUES (?,?,?,?,?)`
         const [result] = await connection.execute(statement, [main_name, operate_itw_name, operate_itw_time, operate_itw_result, operate_itw_suggest])
-        //面试结果
-        const statement1 = `UPDATE interview_table_info SET result = ? WHERE name = ?;`
-        await connection.execute(statement1, [operate_itw_result, main_name])
-        //面试结果
-        const statement2 = `UPDATE application_table_info SET result = ? WHERE name = ?;`
-        await connection.execute(statement2, [operate_itw_result, main_name])
-        //评论插入到详情
+
         const statement3 = `UPDATE all_info SET operate_itw_name=?,operate_itw_time=?,operate_itw_result=?,operate_itw_suggest=? WHERE cn_name=?`
         await connection.execute(statement3, [operate_itw_name, operate_itw_time, operate_itw_result, operate_itw_suggest, main_name])
         return result
@@ -46,11 +40,7 @@ class backendService {
         }
         const statement = `INSERT INTO research_itw_info (main_name, research_itw_name, research_itw_time, research_itw_write_result, research_itw_result, research_itw_suggestion) VALUES (?,?,?,?,?,?)`
         const [result] = await connection.execute(statement, [main_name, research_itw_name, research_itw_time, research_itw_write_result, research_itw_result, research_itw_suggestion])
-        const statement1 = `UPDATE interview_table_info SET result = ? WHERE name = ?;`
-        await connection.execute(statement1, [research_itw_result, main_name])
-        const statement2 = `UPDATE application_table_info SET result = ? WHERE name = ?;`
-        await connection.execute(statement2, [research_itw_result, main_name])
-        //评论插入到详情
+
         const statement3 = `UPDATE all_info SET research_itw_name=?,research_itw_time=?,research_itw_write_result=?,research_itw_result=?,research_itw_suggestion=? WHERE cn_name=?;`
         await connection.execute(statement3, [research_itw_name, research_itw_time, research_itw_write_result, research_itw_result, research_itw_suggestion, main_name])
         return result
@@ -63,10 +53,7 @@ class backendService {
 
         const statement = `INSERT INTO market_itw_info (main_name, market_itw_name, market_itw_time, market_itw_result, market_itw_suggest) VALUES (?,?,?,?,?)`
         const [result] = await connection.execute(statement, [main_name, market_itw_name, market_itw_time, market_itw_result, market_itw_suggest])
-        const statement1 = `UPDATE interview_table_info SET result = ? WHERE name = ?;`
-        await connection.execute(statement1, [market_itw_result, main_name])
-        const statement2 = `UPDATE application_table_info SET result = ? WHERE name = ?;`
-        await connection.execute(statement2, [market_itw_result, main_name])
+
 
         //评论插入到详情
         const statement3 = `UPDATE all_info SET market_itw_name=?,market_itw_time=?,market_itw_result=?,market_itw_suggest=? WHERE cn_name=?`
@@ -78,6 +65,18 @@ class backendService {
         const statement = `SELECT * FROM all_info WHERE cn_name = ? ;`
         const [result] = await connection.execute(statement, [name])
         return result[0]
+    }
+    async finallyResult (finallyResult, name) {
+
+        const statement = `UPDATE all_info SET finallyresult=? WHERE cn_name = ? ;`
+        await connection.execute(statement, [finallyResult, name])
+
+        const statement1 = `UPDATE interview_table_info SET result = ? WHERE name = ?;`
+        await connection.execute(statement1, [finallyResult, name])
+
+        const statement2 = `UPDATE application_table_info SET result = ? WHERE name = ?;`
+        await connection.execute(statement2, [finallyResult, name])
+
     }
 
 }
