@@ -440,7 +440,6 @@ class mobileService {
         return result
     }
 
-
     async allInfoInsert (position,
         other_position,
         price,
