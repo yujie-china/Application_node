@@ -420,19 +420,19 @@ class mobileService {
         } else {
             sex = "女"
         }
-        if (road == 1) {
-            road = 网站
-        } else if (road == 2) {
-            road = "招聘会"
-        } else if (road == 3) {
-            road = "报纸"
-        } else if (road == 4) {
-            road = "猎头"
-        } else if (road == 5) {
-            road = "推荐"
-        } else if (road == 6) {
-            road = "其他途径"
-        }
+        // if (road == 1) {
+        //     road = 网站
+        // } else if (road == 2) {
+        //     road = "招聘会"
+        // } else if (road == 3) {
+        //     road = "报纸"
+        // } else if (road == 4) {
+        //     road = "猎头"
+        // } else if (road == 5) {
+        //     road = "推荐"
+        // } else if (road == 6) {
+        //     road = "其他途径"
+        // }
         const statement = `INSERT INTO interview_table_info (name,sex,age,phone, 
             position,channel,salary) VALUES (?,?,?,?,?,?,?);`
         const [result] = await connection.execute(statement, [cn_name, sex, age,
