@@ -9,6 +9,7 @@ backendRouter.post("/interview/operate", backendController.operateComment)
 backendRouter.post("/interview/research", backendController.researchComment)
 backendRouter.post("/interview/market", backendController.marketComment)
 backendRouter.get("/application/detailsData", backendController.detailsData)
+backendRouter.get("/application/detailsDataPlus", backendController.detailsDataPlus)
 backendRouter.post("/finallyResult", backendController.finallyResult)
 
 //导出路由

@@ -50,14 +50,27 @@ class backendController {
             data: result
         }
     }
+    //返回详情信息
     async detailsData (ctx, next) {
         const { name } = ctx.request.query
+        console.log(name)
         const result = await backendService.detailsData(name)
         ctx.body = {
             code: 0,
             data: result
         }
     }
+    //雷达图结果
+    async detailsDataPlus (ctx, next) {
+        const { name } = ctx.request.query
+        console.log(name)
+        const result = await backendService.detailsDataPlus(name)
+        ctx.body = {
+            code: 0,
+            data: result
+        }
+    }
+
     //最终结果
     async finallyResult (ctx, next) {
         const { finallyResult, name } = ctx.request.body

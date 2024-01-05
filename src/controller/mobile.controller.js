@@ -274,7 +274,7 @@ class mobileController {
         await mobileService.interviewTableInsert(cn_name, sex, age,
             phone, position, road, price)
 
-        await mobileService.allInfoInsert(position,
+        await mobileService.allInfoInsert(age, position,
             other_position,
             price,
             job_status,
